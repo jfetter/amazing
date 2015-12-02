@@ -1,7 +1,11 @@
 "use strict";
 
+
 angular.module("amazing")
-	.controller("loginCtrl", function($scope, $auth, $state){
+	.controller("loginCtrl", function($scope, $auth, $state, $firebaseObject){
+		var ref = new Firebase('https://amazing-mazes.firebaseio.com/');
+		$scope.data = $firebaseObject(ref);
+		
 		$scope.isAuthenticated=function(){
 			return $auth.isAuthenticated();
 		};

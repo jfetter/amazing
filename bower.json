@@ -17,6 +17,8 @@
     "jquery": "~2.1.4",
     "angular": "~1.4.8",
     "ui-router": "~0.2.15",
-    "satellizer": "~0.13.1"
+    "satellizer": "~0.13.1",
+    "firebase": "~2.3.2",
+    "angularfire": "~1.1.3"
   }
 }

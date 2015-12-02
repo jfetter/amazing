@@ -22,8 +22,9 @@ app.use(express.static("public"));
 //ROUTES
 app.get("/", function(req,res){
 	res.render("index");
-})
-app.use("/auth", require("./routes/auth"))
+});
+app.use("/auth", require("./routes/auth"));
+app.use("/users", require("./routes/users"));
 
 app.listen(PORT, function(){console.log("Listening on port", PORT); });
 
