@@ -17,7 +17,7 @@ html(lang="en")
           a.navbar-brand(ui-sref='login') AMAZING
         #bs-example-navbar-collapse-1.collapse.navbar-collapse
           ul.nav.navbar-nav 
-            li(ng-if="isAuthenticated()")
+            li(ng-if="isAuthenticated()" ng-controller="mazesCtrl")
               a(ng-click='logout()') Log Out.
       ui-view      
 
@@ -26,7 +26,7 @@ html(lang="en")
     script(src='vendor/satellizer/satellizer.min.js')
     script(src="vendor/bootstrap/dist/js/bootstrap.min.js")
     script(src='module.js')
-    //- script(src="views/mazes/mazesCtrl.js")
+    script(src="mazes/mazesCtrl.js")
     script(src='login/loginCtrl.js')
 
   

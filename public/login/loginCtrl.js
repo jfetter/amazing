@@ -9,6 +9,7 @@ angular.module("amazing")
 			$auth.authenticate(provider)
 			.then(function(res){
 				console.log("RESPONSE", res)
+				$state.go('mazes')
 			})
 			.catch(function(error){
 				console.error(error)
