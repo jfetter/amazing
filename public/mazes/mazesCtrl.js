@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('amazing')
-.controller('mazesCtrl', function($scope, $auth, $state, $http, $firebaseObject){
+.controller('mazesCtrl', function($scope, $auth, $state, $http, $firebaseObject, service){
   var ref = new Firebase('https://amazing-mazes.firebaseio.com/');
   var usersRef = ref.child("users");
 
@@ -16,12 +16,13 @@ angular.module('amazing')
     $scope.users = res.data;
     console.log("SCOPE.USERS", $scope.users);
 
-    usersRef.push({
-     response: res.data
-      // displayName: displayName,
-      // picture: picture
 
-    });
+    // usersRef.push({
+    //  // response: res.data
+    //   // displayName: displayName,
+    //   // picture: picture
+
+    // });
 
 
   }, function(err){

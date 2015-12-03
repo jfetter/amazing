@@ -12,4 +12,10 @@ router.get('/', function(req, res) {
   });
 });
 
+// router.get('/:_id', function(req, res){
+//   User.findbyId(req.params._id, function(err, user){
+//     res.status(err? 400 : 200).send(err || user);
+//   });
+// });
+
 module.exports = router;

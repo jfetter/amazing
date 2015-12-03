@@ -3,7 +3,7 @@
 
 
 angular.module("amazing")
-.controller("loginCtrl", function($scope, $auth, $state){
+.controller("loginCtrl", function($scope, $auth, $state, service){
 
 	$scope.isAuthenticated = function(){
 		return $auth.isAuthenticated();
@@ -11,10 +11,16 @@ angular.module("amazing")
 	$scope.authenticate = function(provider){
 		$auth.authenticate(provider)
 		.then(function(res){
-			$state.go('mazes')
+			console.log("LOGIN CTRL RES", res);
+
+			service.addNewUser(res);
+
+			// $state.go('mazes')
 		})
 		.catch(function(error){
 			console.error(error)
 		})
 	}
+
+
 });

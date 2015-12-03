@@ -50,10 +50,9 @@ router.post('/github', function(req, res) {
             user.github = profile.id;
             user.picture = user.picture || profile.avatar_url;
             user.displayName = user.displayName ? user.displayName : profile.name;
-            // console.log("DISP NAME", user.displayName);
             user.save(function() {
               var token = user.createJWT();
-              res.send({ token: token });
+              res.send({ token: token, user: user});
             });
           });
         });
@@ -62,7 +61,8 @@ router.post('/github', function(req, res) {
         User.findOne({ github: profile.id }, function(err, existingUser) {
           if (existingUser) {
             var token = existingUser.createJWT();
-            return res.send({ token: token });
+            var user = existingUser;
+            return res.send({ token: token, user: user });
           }
           var user = new User();
           user.github = profile.id;
@@ -72,7 +72,7 @@ router.post('/github', function(req, res) {
           user.displayName = (profile.name !== null) ? profile.name : profile.login;
           user.save(function() {
             var token = user.createJWT();
-            res.send({ token: token });
+            res.send({ token: token, user: user });
           });
         });
       }
@@ -109,7 +109,6 @@ router.post('/facebook', function(req, res) {
       if (response.statusCode !== 200) {
         return res.status(500).send({ message: profile.error.message });
       }
-      console.log(profile);
       if (req.headers.authorization) {
         User.findOne({ facebook: profile.id }, function(err, existingUser) {
           if (existingUser) {
@@ -126,7 +125,7 @@ router.post('/facebook', function(req, res) {
             user.displayName = user.displayName || profile.name;
             user.save(function() {
               var token = user.createJWT();
-              res.send({ token: token });
+              res.send({ token: token, user: user });
             });
           });
         });
@@ -135,7 +134,8 @@ router.post('/facebook', function(req, res) {
         User.findOne({ facebook: profile.id }, function(err, existingUser) {
           if (existingUser) {
             var token = existingUser.createJWT();
-            return res.send({ token: token });
+            var user = existingUser
+            return res.send({ token: token, user: user});
           }
           var user = new User();
           user.facebook = profile.id;
@@ -143,7 +143,7 @@ router.post('/facebook', function(req, res) {
           user.displayName = profile.name;
           user.save(function() {
             var token = user.createJWT();
-            res.send({ token: token });
+            res.send({ token: token, user: user });
           });
         });
       }
