@@ -1,6 +1,6 @@
 "use strict";
 
-let amazing = angular.module("amazing", ["ui.router", "satellizer"]);
+let amazing = angular.module("amazing", ["ui.router", "satellizer", "firebase"]);
 
 amazing.config(function($stateProvider, $urlRouterProvider, $authProvider){
 	$urlRouterProvider.otherwise("/login");
