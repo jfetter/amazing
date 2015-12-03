@@ -14,8 +14,8 @@ angular.module("amazing")
 			console.log("LOGIN CTRL RES", res);
 
 			service.addNewUser(res);
-
-			// $state.go('mazes')
+			
+		 	$state.go('mazes')
 		})
 		.catch(function(error){
 			console.error(error)

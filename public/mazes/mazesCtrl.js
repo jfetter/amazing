@@ -16,13 +16,25 @@ angular.module('amazing')
     $scope.users = res.data;
     console.log("SCOPE.USERS", $scope.users);
 
+    console.log("PLAYERS", service.players)
+    $scope.players = service.players;
 
-    // usersRef.push({
-    //  // response: res.data
-    //   // displayName: displayName,
-    //   // picture: picture
+  var ref = new Firebase('https://amazing-mazes.firebaseio.com/');
+  var usersRef = ref.child("users");
 
-    // });
+  $scope.startPosition = 1;
+
+  $scope.data = $firebaseObject(ref);
+  var syncObject = $firebaseObject(ref);
+  syncObject.$bindTo($scope, "data");
+
+     usersRef.push({
+        player: $scope.players
+        // response: res.data
+        // displayName: displayName,
+        // picture: picture
+
+     });
 
 
   }, function(err){

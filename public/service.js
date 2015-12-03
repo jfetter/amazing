@@ -3,18 +3,13 @@
 angular.module('amazing')
 
 .service('service', function($http, $firebaseObject){
-  var players = {};
-  var player = {};
 
-  var ref = new Firebase('https://amazing-mazes.firebaseio.com/');
-  var usersRef = ref.child("users");
+  this.players = {};
+  this.player = {};
 
-  $scope.startPosition = 1;
-
-  $scope.data = $firebaseObject(ref);
-  var syncObject = $firebaseObject(ref);
-  syncObject.$bindTo($scope, "data");
-
+  var players = this.players;
+  var player = this.player; 
+  
   this.addNewUser = function(res){
     var user = res.data.user;
     player = {
