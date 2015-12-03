@@ -4,7 +4,8 @@
   "description": "",
   "app": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "start": "node app.js",
+  "postinstall": "bower i"
   },
   "author": "",
   "license": "ISC",
@@ -21,4 +22,6 @@
     "request": "^2.67.0",
     "satellizer": "^0.13.1"
   }
+
+
 }
