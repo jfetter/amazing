@@ -5,8 +5,6 @@ angular.module('amazing')
   var ref = new Firebase('https://amazing-mazes.firebaseio.com/');
   var usersRef = ref.child("users");
 
-  $scope.startPosition = 1;
-
   $scope.data = $firebaseObject(ref);
   var syncObject = $firebaseObject(ref);
   syncObject.$bindTo($scope, "data");
@@ -16,26 +14,28 @@ angular.module('amazing')
     $scope.users = res.data;
     console.log("SCOPE.USERS", $scope.users);
 
-    console.log("PLAYERS", service.players)
-    $scope.players = service.players;
+    console.log("PLAYER", service.player)
+    $scope.player = service.player;
 
   var ref = new Firebase('https://amazing-mazes.firebaseio.com/');
   var usersRef = ref.child("users");
-
-  $scope.startPosition = 1;
 
   $scope.data = $firebaseObject(ref);
   var syncObject = $firebaseObject(ref);
   syncObject.$bindTo($scope, "data");
 
      usersRef.push({
-        player: $scope.players
+        player: $scope.player
         // response: res.data
         // displayName: displayName,
         // picture: picture
-
      });
 
+     var $avatar = $("<img>")
+     $avatar.attr("src", $scope.player.picture)
+
+    $("#1").append($avatar)
+    console.log($scope.player.picture, "PIC")
 
   }, function(err){
     console.error(err);
